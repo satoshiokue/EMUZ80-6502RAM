@@ -57,7 +57,7 @@ PIC18F47Q84 EMUZ80-6502RAM_Q8x.hex
 Memory size ?
 
 Enhanced BASIC 2.22p5a
-3327 Bytes free
+44287 Bytes free
 
 Ready
 ```
@@ -70,7 +70,6 @@ https://philpem.me.uk/leeedavison/6502/ehbasic/
 ## W65C02Sプログラムの格納
 インテルHEXデータを配列データ化して配列rom[]に格納すると0xC000に転送されW65C02Sで実行できます。
 ROMデータは64kBまで転送できます。
-
 
 ## 謝辞
 思い入れのあるCPUを動かすことのできるシンプルで美しいEMUZ80を開発された電脳伝説さんに感謝いたします。
