@@ -12,8 +12,12 @@ RAMの制御信号とメモリマップドIOのRDY信号をPICのCLC(Configurabl
 
 W65C02S6TPG-14とPIC18F47Q43の組み合わせで動作確認しています。  
 
-動作確認済みCPU  
+動作確認で使用したCPU  
 WDS W65C02S6TPG-14 1.6MHz - 10.6MHz  
+Rockwell R65C02P2 2MHz  
+
+## NMOSの6502にはBE信号がありません。起動時にPICからRAMにデータを転送できないためEMUZ80-6502RAMは使用できません。  
+
 
 このソースコードは電脳伝説さんのmain.cを元に改変してGPLライセンスに基づいて公開するものです。
 
@@ -26,7 +30,10 @@ https://github.com/satoshiokue/MEZ6502RAM/blob/main/MEZ6502RAM.pdf　　
 ## ファームウェア
 
 EMUZ80で配布されているフォルダemuz80.X下のmain.cと置き換えて使用してください。
-* emuz80_6502ram.c
+* emuz80_6502ram.c  
+
+## クロック周波数
+
 
 ## アドレスマップ
 ```
