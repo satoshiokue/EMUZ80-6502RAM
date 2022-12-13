@@ -370,7 +370,6 @@ void main(void) {
 	LATE0 = 1;			// BE = High
 	LATE2 = 1;			// Release reset
 
-	// 6502 start
 	while(1);			// All things come to those who wait
 }
 
