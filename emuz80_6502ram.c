@@ -219,7 +219,7 @@ void main(void) {
 	// /OE (RA5) output pin
 	ANSELA5 = 0;	// Disable analog function
 	RA5PPS = 0x00;	// LATA5 -> RA5
-	LATA5 = 1;		// /OE = Low
+	LATA5 = 1;		// /OE = High
 	TRISA5 = 0;		// Set as output
 
 	// UART3 initialize
