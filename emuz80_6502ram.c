@@ -147,8 +147,6 @@ void __interrupt(irq(CLC5),base(8)) CLC5_ISR(){
 
 	// Detect CLK falling edge
 	while(RA3);
-	while(!RA3);
-	while(RA3);
 	//Release RDY (D-FF reset)
 	G3POL = 1;
 	G3POL = 0;
