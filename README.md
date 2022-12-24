@@ -25,6 +25,10 @@ NMOS6502にはBE信号がありません。起動時にPICからRAMにデータ�
 ## メザニンボード
 https://github.com/satoshiokue/MEZ6502RAM  
 
+MEZ6502RAM専用プリント基板 - オレンジピコショップ  
+https://store.shopping.yahoo.co.jp/orangepicoshop/pico-a064.html
+
+
 ## 回路図
 https://github.com/satoshiokue/MEZ6502RAM/blob/main/MEZ6502RAM.pdf　　
 
