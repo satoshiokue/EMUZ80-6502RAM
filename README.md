@@ -30,7 +30,7 @@ https://store.shopping.yahoo.co.jp/orangepicoshop/pico-a064.html
 
 
 ## 回路図
-https://github.com/satoshiokue/MEZ6502RAM/blob/main/MEZ6502RAM.pdf　　
+https://github.com/satoshiokue/MEZ6502RAM/blob/main/MEZ6502RAM.pdf
 
 ## ファームウェア
 
