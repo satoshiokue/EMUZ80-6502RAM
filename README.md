@@ -3,7 +3,7 @@
 ![EMUZ80-6502RAM](https://github.com/satoshiokue/EMUZ80-6502RAM/blob/main/imgs/IMG_1725.jpeg)  
 6502 Single-Board Computer    
 
-![SuperMEZ80](https://github.com/satoshiokue/EMUZ80-6502RAM/blob/main/imgs/IMG_1711.jpeg)  
+![EMUZ80-6502RAM](https://github.com/satoshiokue/EMUZ80-6502RAM/blob/main/imgs/IMG_1711.jpeg)  
 MEZ6502RAM and MEZ6502  
 
 電脳伝説さん(@vintagechips)のEMUZ80が出力するZ80 CPU制御信号をメザニンボードで組み替え、W65C02Sと64kB RAMを動作させることができます。  
