@@ -58,6 +58,9 @@ I/O   0xB000 - 0xBFFF
 ## PICプログラムの書き込み
 EMUZ80技術資料8ページにしたがってPICに適合するファイルを書き込んでください。  
 
+またはArduino UNOを用いてPICを書き込みます。  
+https://github.com/satoshiokue/Arduino-PIC-Programmer
+
 PIC18F47Q43 EMUZ80-6502RAM_Q43.hex  
 
 PIC18F47Q83 EMUZ80-6502RAM_Q8x.hex  
