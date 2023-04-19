@@ -100,3 +100,7 @@ EUMZ80はZ80CPUとPIC18F47Q43のDIP40ピンIC2つで構成されるシンプル�
 https://vintagechips.wordpress.com/2022/03/05/emuz80_reference  
 EMUZ80専用プリント基板 - オレンジピコショップ  
 https://store.shopping.yahoo.co.jp/orangepicoshop/pico-a-051.html
+
+## 改訂
+Version 0.2 2023/4/19  
+起動時にFirmwareの対象基板(MEZ6502RAM)とクロック周波数を表示  
