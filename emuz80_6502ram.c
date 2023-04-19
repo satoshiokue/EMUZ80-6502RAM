@@ -7,6 +7,7 @@
  * 
  * Modified by Satoshi Okue https://twitter.com/S_Okue
  * Version 0.1 2022/12/9
+ * Version 0.2 2023/4/19
  */
 
 /*
