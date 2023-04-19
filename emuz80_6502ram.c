@@ -102,57 +102,22 @@ union {
 	};
 } ab;
 
-/*
 // UART3 Transmit
 void putch(char c) {
     while(!U3TXIF);		// Wait or Tx interrupt flag set
     U3TXB = c;			// Write data
 }
 
+/*
 // UART3 Recive
 char getch(void) {
     while(!U3RXIF);		// Wait for Rx interrupt flag set
     return U3RXB;		// Read data
 }
-//*/
+*/
 
 // Never called, logically
 void __interrupt(irq(default),base(8)) Default_ISR(){}
-
-// Called at RDY falling edge(Immediately after CLK rasing)
-void __interrupt(irq(CLC5),base(8)) CLC5_ISR(){
-	CLC5IF = 0;					// Clear interrupt flag
-	ab.h = PORTD;				// Read address high
-	ab.l = PORTB;				// Read address low
-
-	//6502 IO write cycle
-	if(!RA4) {
-		if(ab.w == UART_DREG)	// U3TXB
-		U3TXB = PORTC;			// Write into	U3TXB
-
-	//Release RDY (D-FF reset)
-	G3POL = 1;
-	G3POL = 0;
-	return;
-	}
-
-	//6502 IO read cycle
-	TRISC = 0x00; 				// Set as output
-	if(ab.w == UART_CREG)		// PIR9
-		LATC = PIR9;			// Out PIR9
-	else if(ab.w == UART_DREG)	// U3RXB
-		LATC = U3RXB;			// Out U3RXB
-	else						// Empty
-		LATC = 0xff;			// Invalid address
-
-	// Detect CLK falling edge
-	while(RA3);
-	//Release RDY (D-FF reset)
-	G3POL = 1;
-	G3POL = 0;
-
-	TRISC = 0xff;				// Set as input
-}
 
 // main routine
 void main(void) {
@@ -262,6 +227,8 @@ void main(void) {
 	WPUC = 0xff;	// Week pull up
 	TRISC = 0xff;	// Set as input(default)
 
+	printf("\r\nMEZ6502RAM %2.3fMHz\r\n",NCO1INC * 30.5175781 / 1000000);
+
 	//========== CLC input pin assign ===========
 	// 0,1,4,5 = Port A, C
 	// 2,3,6,7 = Port B, D
@@ -337,7 +304,7 @@ void main(void) {
 	CLCnGLS3 = 0x0;		// Connect none
 
 	CLCnPOL = 0x82;		// inverted the CLC5 output, G2 inverted
-	CLCnCON = 0x8c;		// Select D-FF, falling edge inturrupt
+	CLCnCON = 0x84;		// Select D-FF
 
 	//========== CLC output pin assign ===========
 	// 1,2,5,6 = Port A, C
@@ -359,16 +326,42 @@ void main(void) {
 	IVTLOCK = 0xAA;
 	IVTLOCKbits.IVTLOCKED = 0x01;
 
-	// CLC VI enable
-	CLC5IF = 0;			// Clear the CLC5 interrupt flag
-	CLC5IE = 1;			// Enabling CLC5 interrupt
-
 	// 6502 start
 	GIE = 1;			// Global interrupt enable
 	LATE0 = 1;			// BE = High
 	LATE2 = 1;			// Release reset
 
-	while(1);			// All things come to those who wait
+	while(1){
+		while(CLC5OUT);
+		ab.h = PORTD;				// Read address high
+		ab.l = PORTB;				// Read address low
+
+		//6502 IO write cycle
+		if(!RA4) {
+			if(ab.w == UART_DREG)	// U3TXB
+			U3TXB = PORTC;			// Write into	U3TXB
+
+			//Release RDY (D-FF reset)
+			G3POL = 1;
+			G3POL = 0;
+		} else {
+		//6502 IO read cycle
+			TRISC = 0x00;				// Set Data Bus as output
+			if(ab.w == UART_CREG)		// PIR9
+				LATC = PIR9;			// Out PIR9
+			else if(ab.w == UART_DREG)	// U3RXB
+				LATC = U3RXB;			// Out U3RXB
+			else						// Empty
+				LATC = 0xff;			// Invalid address
+
+			// Detect CLK falling edge
+			while(RA3);
+			//Release RDY (D-FF reset)
+			G3POL = 1;
+			TRISC = 0xff;				// Set Data Bus as input
+			G3POL = 0;
+		}
+	}
 }
 
 const unsigned char rom[ROM_SIZE] = {
