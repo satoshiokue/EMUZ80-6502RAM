@@ -157,7 +157,7 @@ void main(void) {
 	RA3PPS = 0x3f;	// RA1 assign NCO1
 	ANSELA3 = 0;	// Disable analog function
 	TRISA3 = 0;		// NCO output pin
-	NCO1INC = CLK_6502 * 2 / 61;
+	NCO1INC = (unsigned int)(CLK_6502 / 30.5175781);
 	NCO1CLK = 0x00; // Clock source Fosc
 	NCO1PFM = 0;	// FDC mode
 	NCO1OUT = 1;	// NCO output enable
@@ -365,7 +365,7 @@ void main(void) {
 	}
 }
 
-const unsigned char rom[ROM_SIZE] = {
+const unsigned char rom[] = {
 // Enhanced 6502 BASIC 2.22p5a
 // Derived from EhBASIC
 // 0xC000
