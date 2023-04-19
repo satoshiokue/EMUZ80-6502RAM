@@ -104,3 +104,4 @@ https://store.shopping.yahoo.co.jp/orangepicoshop/pico-a-051.html
 ## 改訂
 Version 0.2 2023/4/19  
 起動時にFirmwareの対象基板(MEZ6502RAM)とクロック周波数を表示  
+IO処理を割り込みからポーリングに変更
