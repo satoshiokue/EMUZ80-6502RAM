@@ -14,7 +14,6 @@ W65C02S6TPG-14とPIC18F47Q43の組み合わせで動作確認しています。
 
 動作確認で使用したCPU  
 WDS W65C02S6TPG-14 1.6MHz - 10.6MHz  
-Rockwell R65C02P2 2MHz  
 
 ```
 NMOS6502にはBE信号がありません。起動時にPICからRAMにデータを転送できないためEMUZ80-6502RAMは使用できません。  
